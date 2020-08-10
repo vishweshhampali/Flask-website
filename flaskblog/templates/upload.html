@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<div class="col-lg-3" style="margin-left: auto;margin-right: auto;">
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ upload.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Upload Notes</legend>
+                <div class="form-group">
+                    {{ upload.writername.label(class="form-control-label") }}
+                    {% if upload.writername.errors %}
+                        {{ upload.writername(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in upload.writername.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ upload.writername(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ upload.subjectname.label(class="form-control-label") }}
+                    {% if upload.subjectname.errors %}
+                        {{ upload.subjectname(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in upload.subjectname.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ upload.subjectname(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ upload.uploadfile.label() }}
+                    {{ upload.uploadfile(class="form-control-file") }}
+                    {% if upload.uploadfile.errors %}
+                        {% for error in upload.uploadfile.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ upload.update(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+{% endblock %}

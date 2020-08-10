@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<br>
+<br>
+<br>
+
+<hr>
+    {% for post in posts %}
+        <div class="col-lg-6" style="margin-left: auto; margin-right: auto;">
+          <a href="{{ url_for('static', filename='files/' + post.filename) }}">Download PDF</a> 
+          <div class="media-body">
+            <div >
+              <small>Author</small>
+              <h3>{{ post.writername }}</h3>
+              <small>Subject</small>
+              <h3>{{ post.subjectname }}</h3>
+            </div>
+          </div>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}
